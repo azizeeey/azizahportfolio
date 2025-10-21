@@ -1,17 +1,41 @@
-document.querySelectorAll('.skill-icon').forEach(icon => {
-  const randomX = (Math.random() - 0.5) * 4;
-  const randomY = (Math.random() - 0.5) * 4;
-  icon.animate(
-    [
-      { transform: `translate(0, 0)` },
-      { transform: `translate(${randomX}px, ${randomY}px)` },
-      { transform: `translate(0, 0)` }
-    ],
-    {
-      duration: 5000 + Math.random() * 3000,
-      iterations: Infinity,
-      direction: 'alternate',
-      easing: 'ease-in-out'
-    }
-  );
+document.addEventListener('DOMContentLoaded', function () {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-menu li a');
+
+  const observerOptions = {
+    root: null, // observes intersections relative to the viewport
+    rootMargin: '0px',
+    threshold: 0.6 // 60% of the section must be visible
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Smooth scroll for anchor links
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if(targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 });
