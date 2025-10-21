@@ -655,6 +655,46 @@ body {
   color: var(--gray);
   font-size: 1rem;
 }
+
+.btn-view-all, .btn-back {
+  margin-top: 2rem;
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 0.7rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.4s ease;
+}
+
+.btn-view-all:hover, .btn-back:hover {
+  background-color: #DFE1FA;
+  color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(90, 51, 209, 0.2);
+}
+
+.btn-details {
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: auto;
+  transition: background-color 0.3s ease;
+}
+
+.btn-details:hover {
+  background-color: var(--primary);
+}
 /* ====== CONTACT SECTION ====== */
 .contact-section {
   padding: 100px 0;
