@@ -30,11 +30,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // Smooth scroll for anchor links
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if(targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const href = this.getAttribute('href');
+      // Cek jika ini adalah anchor link di halaman yang sama
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const targetElement = document.querySelector(href);
+        if(targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Update URL tanpa reload halaman
+          history.pushState(null, null, href);
+        }
       }
     });
   });
