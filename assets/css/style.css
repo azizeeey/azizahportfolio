@@ -480,12 +480,11 @@ body {
 }
 
 /* ====== EXPERIENCES SECTION ====== */
-
 .experiences-section {
   padding: 100px 0;
   background: #fff;
-  text-align: center;
 }
+
 .experiences-section h1 {
   font-size: 2.2rem;
   color: #410299ee;
@@ -493,62 +492,86 @@ body {
   text-align: center;
 }
 
-.experience-timeline {
+/* This is the main timeline container */
+.experiences-content {
   position: relative;
-  margin-top: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
-.experience-timeline::before {
+
+/* The central vertical line */
+.experiences-content::before {
   content: '';
   position: absolute;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
+  top: 80px; /* Adjusted to start below the H1 title */
+  bottom: 0;
   width: 2px;
-  height: 100%;
-  background: var(--primary);
+  background: #e0e0e0;
 }
+
+/* Each item in the timeline */
 .experience-item {
   position: relative;
   width: 50%;
-  padding: 1rem 2rem;
+  padding: 1rem 40px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
 }
+
+/* Odd items on the left */
 .experience-item:nth-child(odd) {
   left: 0;
   text-align: right;
 }
+
+/* Even items on the right */
 .experience-item:nth-child(even) {
   left: 50%;
   text-align: left;
 }
+
+/* The circle (dot) for each item */
 .experience-item::before {
   content: '';
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: var(--primary);
+  background: var(--white);
+  border: 3px solid var(--primary-dark);
+  z-index: 1;
 }
+
+/* Position the dot for odd (left) items */
 .experience-item:nth-child(odd)::before {
-  right: -12px;
+  right: -8px;
 }
+
+/* Position the dot for even (right) items */
 .experience-item:nth-child(even)::before {
-  left: -12px;
+  left: -8px;
 }
+
+.experience-item h2 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+
 .experience-item h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--accent-light);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
-.experience-item p {
-  font-size: 1rem;
-  color: var(--accent);
-}
-.experience-item .date {
+
+.experience-item .experience-duration {
   font-size: 0.9rem;
   color: var(--gray);
-  margin-bottom: 0.5rem;
+  display: block;
 }
 
 
