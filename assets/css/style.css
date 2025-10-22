@@ -648,6 +648,7 @@ body {
   background: var(--primary-dark);
   color: #fff;
   padding: 0.7rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(90, 51, 209, 0.2);
   border-radius: 15px;
   font-weight: 700;
   text-decoration: none;
@@ -658,7 +659,9 @@ body {
   border: none;
 }
 .btn-case:hover {
-  background: var(--primary);
+  background: #DFE1FA;
+  color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(90, 51, 209, 0.2);
 }
 
 /* ====== CERTIFICATES SECTION ====== */
