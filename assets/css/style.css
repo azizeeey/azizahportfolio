@@ -693,8 +693,8 @@ body {
 }
 .certificate-item img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 .certificate-content {
   padding: 1.5rem;
