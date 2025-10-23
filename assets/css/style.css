@@ -654,7 +654,7 @@ body {
   text-decoration: none;
   font-size: 1rem;
   margin-top: 1rem;
-  align-self: flex-start;
+  align-self: center;
   transition: background var(--transition);
   border: none;
 }
@@ -745,7 +745,7 @@ body {
   font-size: 0.9rem;
   border: none;
   cursor: pointer;
-  align-self: flex-start;
+  align-self: center;
   margin-top: auto;
   transition: background-color 0.3s ease;
 }
