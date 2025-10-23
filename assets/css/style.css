@@ -632,15 +632,6 @@ body {
   gap: 0.7rem;
   margin-bottom: 0.5rem;
 }
-.portfolio-tags span {
-  background: #fff;
-  color: #6878ac;
-  border-radius: 10px;
-  padding: 0.3rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border: 1px solid #edf0f9;
-}
 .portfolio-content p {
   color: var(--gray);
   font-size: 1rem;
@@ -648,21 +639,19 @@ body {
 .btn-case {
   background: var(--primary-dark);
   color: #fff;
-  padding: 0.7rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(90, 51, 209, 0.2);
-  border-radius: 15px;
-  font-weight: 700;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+  border-radius: 10px;
+  font-weight: 600;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-top: 1rem;
   align-self: center;
-  transition: background var(--transition);
+  transition: background-color 0.3s ease;
   border: none;
 }
 .btn-case:hover {
-  background: #DFE1FA;
-  color: var(--primary-dark);
-  box-shadow: 0 4px 12px rgba(90, 51, 209, 0.2);
+  background-color: var(--primary);
 }
 
 /* ====== CERTIFICATES SECTION ====== */
@@ -717,23 +706,22 @@ body {
 
 .btn-view-all, .btn-back {
   margin-top: 2rem;
-  background: var(--primary-dark);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
-  padding: 0.7rem 2rem;
-  border-radius: 12px;
+  padding: 15px 30px;
+  border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
-  font-size: 1rem;
   border: none;
+  font-size: 1rem;
   cursor: pointer;
   display: inline-block;
   transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.4s ease;
 }
 
 .btn-view-all:hover, .btn-back:hover {
-  background-color: #DFE1FA;
-  color: var(--primary-dark);
-  box-shadow: 0 4px 12px rgba(90, 51, 209, 0.2);
+  box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+  transform: scale(1.05);
 }
 
 .btn-details {
@@ -862,6 +850,7 @@ body {
 
 .btn-send:hover {
   box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+  transform: scale(1.05);
 }
 
 /* ====== FOOTER ====== */
@@ -1034,4 +1023,10 @@ body {
   pointer-events: none;
   border-radius: 100px;
   overflow: hidden; 
+}
+.portfolio-tags .tech-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
 }
