@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.nav-menu li a');
 
   const observerOptions = {
-    root: null, // observes intersections relative to the viewport
+    root: null, 
     rootMargin: '0px',
-    threshold: 0.2 // 20% of the section must be visible
+    threshold: 0.2 
   };
 
   const observer = new IntersectionObserver((entries, observer) => {
@@ -27,24 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(section);
   });
 
-  // Smooth scroll for anchor links
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
-      // Cek jika ini adalah anchor link di halaman yang sama
       if (href.startsWith('#')) {
         e.preventDefault();
         const targetElement = document.querySelector(href);
         if(targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Update URL tanpa reload halaman
           history.pushState(null, null, href);
         }
       }
     });
   });
 
-  // Contact Form Submission
   const contactForm = document.querySelector('.contact-right form');
   if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
@@ -56,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
           const statusDiv = document.createElement('div');
           const submitButton = form.querySelector('button[type="submit"]');
           
-          // Tampilkan status
           statusDiv.style.marginTop = '1rem';
           statusDiv.innerHTML = 'Sending...';
           form.appendChild(statusDiv);
