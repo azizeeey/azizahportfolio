@@ -84,4 +84,33 @@ document.addEventListener('DOMContentLoaded', function () {
           });
       });
   }
+
+  const animatedElements = document.querySelectorAll('.scroll-animate');
+  const animationObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+
+        // Jika ada override lewat atribut data-animate-delay gunakan itu,
+        // jika tidak, hitung index di antara saudara (.scroll-animate) untuk stagger otomatis.
+        if (!el.style.transitionDelay) {
+          let delay = el.dataset.animateDelay;
+          if (!delay) {
+            const parent = el.parentNode || document;
+            const siblings = Array.from(parent.querySelectorAll('.scroll-animate'));
+            const index = Math.max(0, siblings.indexOf(el));
+            delay = `${(index || 0) * 0.08}s`;
+          }
+          el.style.transitionDelay = delay;
+        }
+
+        el.classList.add('visible');
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  animatedElements.forEach(element => {
+    animationObserver.observe(element);
+  });
 });
