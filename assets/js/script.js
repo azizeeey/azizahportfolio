@@ -43,4 +43,50 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // Contact Form Submission
+  const contactForm = document.querySelector('.contact-right form');
+  if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const form = e.target;
+          const formData = new FormData(form);
+          const action = form.getAttribute('action');
+          const statusDiv = document.createElement('div');
+          const submitButton = form.querySelector('button[type="submit"]');
+          
+          // Tampilkan status
+          statusDiv.style.marginTop = '1rem';
+          statusDiv.innerHTML = 'Sending...';
+          form.appendChild(statusDiv);
+          submitButton.disabled = true;
+
+          fetch(action, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                  'Accept': 'application/json'
+              }
+          }).then(response => {
+              if (response.ok) {
+                  statusDiv.innerHTML = 'Thanks for your message! I will get back to you shortly.';
+                  submitButton.disabled = false;
+                  form.reset();
+              } else {
+                  response.json().then(data => {
+                      if (Object.hasOwn(data, 'errors')) {
+                          statusDiv.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                      } else {
+                          statusDiv.innerHTML = 'Oops! There was a problem submitting your form';
+                      }
+                      submitButton.disabled = false;
+                  })
+              }
+          }).catch(error => {
+              statusDiv.innerHTML = 'Oops! There was a problem submitting your form. Please check your internet connection.';
+              submitButton.disabled = false;
+          });
+      });
+  }
 });
