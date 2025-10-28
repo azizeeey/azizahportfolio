@@ -192,6 +192,8 @@ body {
   gap: 5rem; 
   width: 100%;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 .btn-downloadcv {
   display: inline-block;
