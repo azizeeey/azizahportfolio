@@ -640,6 +640,11 @@ body {
   width: 350px;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+}
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 .portfolio-card img {
   width: 100%;
@@ -714,6 +719,11 @@ body {
   width: 350px;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+}
+.certificate-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 .certificate-item img {
   width: 100%;
@@ -951,7 +961,6 @@ body {
     margin-right: 0; 
   }
   .hero-img {
-    transform: none; 
     width: 70%; 
     max-width: 300px; 
   }
@@ -970,6 +979,9 @@ body {
   .contact-right {
     flex: initial;
     padding: 30px;
+  }
+  .contact-decoration {
+    display: none;
   }
 }
 @media (max-width: 768px) {
