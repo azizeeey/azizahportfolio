@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // keep CSS var --header-height in sync with actual header height
+  function updateHeaderHeight() {
+    const header = document.querySelector('.main-header');
+    const h = header ? header.offsetHeight : 70;
+    document.documentElement.style.setProperty('--header-height', `${h}px`);
+  }
+  // initial update (after potential fonts/images)
+  updateHeaderHeight();
+  // ensure update on resize (and after a short delay for dynamic changes)
+  window.addEventListener('resize', () => {
+    updateHeaderHeight();
+    // small timeout to catch layout shifts on some devices
+    setTimeout(updateHeaderHeight, 120);
+  });
+  // also update after fonts/images load (best-effort)
+  window.addEventListener('load', updateHeaderHeight);
+
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-menu li a');
 
@@ -27,17 +44,38 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(section);
   });
 
+  // smooth scroll with header offset and mobile menu close
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
+      const href = this.getAttribute('href') || '';
+
+      // handle same-page hash links like "#about"
       if (href.startsWith('#')) {
         e.preventDefault();
         const targetElement = document.querySelector(href);
-        if(targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // if mobile menu is open, close it first (visual cleanup)
+        if (typeof navMenu !== 'undefined' && navMenu && navMenu.classList.contains('open')) {
+          navMenu.classList.remove('open');
+          const hb = document.querySelector('.hamburger');
+          if (hb) {
+            hb.classList.remove('is-active');
+            hb.setAttribute('aria-expanded', 'false');
+          }
+          document.body.classList.remove('no-scroll');
+        }
+
+        if (targetElement) {
+          // offset so section appears below sticky header
+          const header = document.querySelector('.main-header');
+          const headerHeight = header ? header.offsetHeight : 0;
+          const offset = 8; // small gap
+          const targetY = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
           history.pushState(null, null, href);
         }
       }
+      // other links (external or page+hash) use default browser behavior
     });
   });
 
@@ -113,4 +151,29 @@ document.addEventListener('DOMContentLoaded', function () {
   animatedElements.forEach(element => {
     animationObserver.observe(element);
   });
+
+  // ===== Mobile hamburger menu toggle =====
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (hamburger && navMenu) {
+    const toggleMenu = (open) => {
+      const isOpen = open ?? !navMenu.classList.contains('open');
+      navMenu.classList.toggle('open', isOpen);
+      hamburger.classList.toggle('is-active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.classList.toggle('no-scroll', isOpen);
+      // ensure header-height reflects any change (menu may increase header height on some designs)
+      updateHeaderHeight();
+    };
+
+    hamburger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // (nav link click now handles closing the menu; no duplicate listeners here)
+  }
+  // update header height once more after DOM-ready microtasks
+  setTimeout(updateHeaderHeight, 200);
 });
