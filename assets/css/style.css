@@ -620,6 +620,11 @@ body {
   margin-bottom: 2.5rem;
   text-align: center;
 }
+.portfolios-section {
+  padding: 100px 0;
+  background: #fbf9fe;
+  text-align: center;
+}
 .section-title {
   font-size: 2.2rem;
   color: var(--accent);
@@ -750,7 +755,8 @@ body {
 }
 
 .btn-view-all, .btn-back {
-  margin-top: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   padding: 15px 30px;
