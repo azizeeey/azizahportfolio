@@ -626,7 +626,8 @@ body {
   margin-bottom: 2.5rem;
   text-align: center;
 }
-.portfolio-list {
+.portfolio-list,
+.portfolios-list {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -682,7 +683,7 @@ body {
   font-weight: 600;
   text-decoration: none;
   font-size: 0.9rem;
-  margin-top: 1rem;
+  margin-top: auto;
   align-self: center;
   transition: background-color 0.3s ease;
   border: none;
@@ -937,7 +938,7 @@ body {
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 1100px) {
-  .hero-flex, .about-flex, .cta-flex, .faq-flex, .reviews-list, .portfolio-list, .footer-flex {
+  .hero-flex, .about-flex, .cta-flex, .faq-flex, .reviews-list, .portfolio-list, .portfolios-list, .footer-flex {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
