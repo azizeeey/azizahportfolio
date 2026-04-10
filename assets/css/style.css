@@ -232,6 +232,12 @@ body {
 }
 .hero-title-highlight {
   color: var(--primary-dark);
+  display: inline-block;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.hero-title-highlight.fade-out {
+  opacity: 0;
+  transform: translateY(-6px);
 }
 .hero-desc {
   font-size: 1.2rem;

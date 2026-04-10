@@ -79,6 +79,28 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  const heroTextCycle = document.querySelector('.hero-title-highlight');
+  if (heroTextCycle) {
+    const heroTitles = [
+      'Developer',
+      'QA Testing',
+      'Data Visualization',
+      'Project Management'
+    ];
+    let heroIndex = 0;
+
+    const cycleHeroText = () => {
+      heroTextCycle.classList.add('fade-out');
+      setTimeout(() => {
+        heroIndex = (heroIndex + 1) % heroTitles.length;
+        heroTextCycle.textContent = heroTitles[heroIndex];
+        heroTextCycle.classList.remove('fade-out');
+      }, 250);
+    };
+
+    setInterval(cycleHeroText, 3200);
+  }
+
   const contactForm = document.querySelector('.contact-right form');
   if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
