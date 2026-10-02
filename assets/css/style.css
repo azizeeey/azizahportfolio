@@ -651,13 +651,17 @@ body {
   justify-content: center;
 }
 .portfolio-role-tabs {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(180px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 0.75rem;
   margin: 0 auto 2rem;
   max-width: 1200px;
 }
 .role-tab {
+  flex: 1 1 180px;
+  max-width: 240px;
   border: 1px solid rgba(65, 2, 153, 0.2);
   background: #fff;
   color: var(--accent);
