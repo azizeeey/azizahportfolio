@@ -101,6 +101,43 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(cycleHeroText, 3200);
   }
 
+  const portfolioTabs = document.querySelectorAll('.role-tab');
+  const portfolioCards = document.querySelectorAll('.portfolio-card');
+  const portfolioEmpty = document.querySelector('.portfolio-empty');
+
+  if (portfolioTabs.length && portfolioCards.length) {
+    const applyPortfolioFilter = (selectedRole) => {
+      let visibleCount = 0;
+
+      portfolioCards.forEach(card => {
+        const matches = card.dataset.role === selectedRole;
+        card.classList.toggle('hidden', !matches);
+        card.style.display = matches ? '' : 'none';
+
+        if (matches) visibleCount++;
+      });
+
+      portfolioTabs.forEach(tab => {
+        const isActive = tab.dataset.role === selectedRole;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      if (portfolioEmpty) {
+        portfolioEmpty.classList.toggle('visible', visibleCount === 0);
+      }
+    };
+
+    portfolioTabs.forEach(tab => {
+      tab.addEventListener('click', function () {
+        applyPortfolioFilter(this.dataset.role);
+      });
+    });
+
+    const defaultRole = document.querySelector('.role-tab.active')?.dataset.role || 'it-quality-assurance';
+    applyPortfolioFilter(defaultRole);
+  }
+
   const contactForm = document.querySelector('.contact-right form');
   if (contactForm) {
       contactForm.addEventListener('submit', function(e) {

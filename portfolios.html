@@ -38,23 +38,45 @@
   <section id="all-portfolio" class="section portfolio-section">
     <div class="container">
       <h1 class="section-title scroll-animate">All Portfolio</h1>
+
+      <div class="portfolio-role-tabs scroll-animate" role="tablist" aria-label="Portfolio roles">
+        <button type="button" class="role-tab active" data-role="it-quality-assurance" role="tab" aria-selected="true">IT Quality Assurance</button>
+        <button type="button" class="role-tab" data-role="it-project-management" role="tab" aria-selected="false">IT Project Management</button>
+        <button type="button" class="role-tab" data-role="software-development" role="tab" aria-selected="false">Software Development</button>
+        <button type="button" class="role-tab" data-role="data-visualization" role="tab" aria-selected="false">Data Visualization</button>
+        <button type="button" class="role-tab" data-role="ui-ux" role="tab" aria-selected="false">UI/UX</button>
+      </div>
+
+      <div class="portfolio-empty">No portfolio found for this role.</div>
       <div class="portfolio-list">
         <!-- All portfolio -->
-          <div class="portfolio-card scroll-animate">
-          <img src="assets/img/allure_report.png" alt="Mobile Testing">
-          <div class="portfolio-content">
-            <h3>Mobile Testing WebdriverIO with Appium</h3>
-            <div class="portfolio-tags">
-              <img src="assets/icons/appium.png" alt="Appium Inspector" class="tech-icon" title="Appium Inspector">
-              <img src="assets/icons/Typescript.png" alt="Typescript" class="tech-icon" title="Typescript">
-              <img src="assets/icons/android_studio.svg" alt="Android Studio" class="tech-icon" title="Android Studio">
-              <img src="assets/icons/Azul_systems_logo.png" alt="Azul Zulu" class="tech-icon" title="Azul Zulu">
+          <div class="portfolio-card scroll-animate" data-role="it-quality-assurance">
+            <div class="portfolio-visual airline-qa">
+              <div class="airline-screen">
+                <div class="screen-topbar">
+                  <span class="screen-pill">QA</span>
+                  <span class="screen-pill alt">Flight App</span>
+                </div>
+                <div class="screen-plane"></div>
+                <div class="screen-metrics">
+                  <span>Ready</span>
+                  <span>Stable</span>
+                </div>
+              </div>
             </div>
-            <p>Mobile Testing WebdriverIO with Appium</p>
-            <a href="https://github.com/azizeeey/webdriverio.git" class="btn btn-case">Show</a>
+            <div class="portfolio-content">
+              <h3>Airline Application Testing</h3>
+              <div class="portfolio-tags">
+                <span class="tech-pill">Deployment</span>
+                <span class="tech-pill">UAT</span>
+                <span class="tech-pill">Regression</span>
+                <span class="tech-pill">Retesting</span>
+              </div>
+              <p>PT Garuda Indonesia (Persero) Tbk.</p>
+              <a href="https://drive.google.com/drive/folders/1dummy-qa-airline?usp=drive_link" class="btn btn-case">Show</a>
+            </div>
           </div>
-        </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="data-visualization">
           <img src="assets/img/material_sales.png" alt="Material Sales Dashboard">
           <div class="portfolio-content">
             <h3>Material Sales Analysis Dashboard</h3>
@@ -65,24 +87,38 @@
             <a href="https://public.tableau.com/app/profile/siti.nur.azizah7163/viz/DashboardPerformanceInsight/Dashboard" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
-          <img src="assets/img/project1.png" alt="SIM KIP LLDIKTI Wilayah II">
-          <div class="portfolio-content">
-            <h3>SIM KIP : LLDIKTI Wilayah II</h3>
-            <div class="portfolio-tags">
-              <img src="assets/icons/html.png" alt="HTML" class="tech-icon" title="HTML">
-              <img src="assets/icons/css.svg" alt="CSS" class="tech-icon" title="CSS">
-              <img src="assets/icons/js.png" alt="JavaScript" class="tech-icon" title="JavaScript">
-              <img src="assets/icons/laravel.png" alt="Laravel" class="tech-icon" title="Laravel">
-              <img src="assets/icons/php.png" alt="PHP" class="tech-icon" title="PHP">
-              <img src="assets/icons/mysql.png" alt="MySQL" class="tech-icon" title="MySQL">
-              <img src="assets/icons/bootstrap.png" alt="Bootstrap" class="tech-icon" title="Bootstrap">
+        <div class="portfolio-card scroll-animate" data-role="it-project-management">
+          <div class="portfolio-visual airline-pm">
+            <div class="airline-badge">PT Garuda Indonesia</div>
+            <div class="pm-window">
+              <div class="pm-header-row">
+                <span class="pm-dot dot-red"></span>
+                <span class="pm-dot dot-yellow"></span>
+                <span class="pm-dot dot-green"></span>
+              </div>
+              <div class="pm-body">
+                <div class="pm-line short"></div>
+                <div class="pm-line medium"></div>
+                <div class="pm-line long"></div>
+                <div class="pm-panel">
+                  <span>Project</span>
+                  <strong>Airline IT</strong>
+                </div>
+              </div>
             </div>
-            <p>SIM KIP adalah sistem pengelolaan KIP Kuliah di LLDIKTI Wilayah II</p>
-            <a href="https://kipkuliahlldikti2.web.id" class="btn btn-case">Show</a>
+          </div>
+          <div class="portfolio-content">
+            <h3>Airline IT Project Management</h3>
+            <div class="portfolio-tags">
+              <span class="tech-pill">Roadmap</span>
+              <span class="tech-pill">Planning</span>
+              <span class="tech-pill">Stakeholder</span>
+            </div>
+            <p>PT Garuda Indonesia (Persero) Tbk.</p>
+            <a href="https://drive.google.com/drive/folders/1dummy-project-management?usp=drive_link" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="it-quality-assurance">
           <img src="assets/img/webui.png" alt="Web UI Automation">
           <div class="portfolio-content">
             <h3>Web UI Automation</h3>
@@ -96,7 +132,7 @@
             <a href="https://github.com/azizeeey/WebUIAutomation2" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="it-quality-assurance">
           <img src="assets/img/Load_Test.png" alt="Load Testing">
           <div class="portfolio-content">
             <h3>Load Testing</h3>
@@ -107,7 +143,7 @@
             <a href="https://drive.google.com/file/d/15Du_eyBsrfjk9h6V6UxUw1pyaJf0bni9/view" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="it-quality-assurance">
           <img src="assets/img/API_Automation.png" alt="API Testing Automation">
           <div class="portfolio-content">
             <h3>API Testing Automation</h3>
@@ -121,7 +157,7 @@
             <a href="https://github.com/azizeeey/APIAutomation_LoginTest.git" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="it-quality-assurance">
           <img src="assets/img/API_Testing.png" alt="API Testing">
           <div class="portfolio-content">
             <h3>API Testing</h3>
@@ -132,7 +168,7 @@
             <a href="https://drive.google.com/file/d/1Dg4HnEqEu1MtjTcV74T4AQ_qKkbBXU6L/view?usp=sharing" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="it-quality-assurance">
           <img src="assets/img/onrender.png" alt="Testing & Bugs Management">
           <div class="portfolio-content">
             <h3>Testing & Bugs Management</h3>
@@ -143,24 +179,7 @@
             <a href="https://drive.google.com/drive/folders/1cFZyBidCYqwL0lsuBf3sMi8OCILLBW87?usp=drive_link" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
-          <img src="assets/img/project2.png" alt="Web LLDIKTI Wilayah II">
-          <div class="portfolio-content">
-            <h3>Web LLDIKTI Wilayah II</h3>
-            <div class="portfolio-tags">
-              <img src="assets/icons/html.png" alt="HTML" class="tech-icon" title="HTML">
-              <img src="assets/icons/css.svg" alt="CSS" class="tech-icon" title="CSS">
-              <img src="assets/icons/js.png" alt="JavaScript" class="tech-icon" title="JavaScript">
-              <img src="assets/icons/laravel.png" alt="Laravel" class="tech-icon" title="Laravel">
-              <img src="assets/icons/php.png" alt="PHP" class="tech-icon" title="PHP">
-              <img src="assets/icons/mysql.png" alt="MySQL" class="tech-icon" title="MySQL">
-              <img src="assets/icons/bootstrap.png" alt="Bootstrap" class="tech-icon" title="Bootstrap">
-            </div>
-            <p>Re-Design laman landing page website LLDIKTI Wilayah II</p>
-            <a href="https://github.com/vickymaulana/Direktori" class="btn btn-case">Show</a>
-          </div>
-        </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="software-development">
           <img src="assets/img/unibookstore.png" alt="Unibookstore">
           <div class="portfolio-content">
             <h3>Unibookstore</h3>
@@ -176,7 +195,7 @@
             <a href="https://unibookstore-six.vercel.app/" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="software-development">
           <img src="assets/img/project3.png" alt="To-Do List Manager">
           <div class="portfolio-content">
             <h3>To-Do List Manager</h3>
@@ -189,7 +208,7 @@
             <a href="https://azizeeey.github.io/CodingCamp-13Oct2025-SitiNurAzizah/" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="software-development">
           <img src="assets/img/project4.png" alt="NuTrace App">
           <div class="portfolio-content">
             <h3>NuTrace App</h3>
@@ -202,7 +221,7 @@
             <a href="https://drive.google.com/file/d/1LLvJDnEomQfELKV_nvYWdF3cdK3Bi5cd/view?usp=drive_link" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="software-development">
           <img src="assets/img/project5.png" alt="SLiMS SMK 2 Mei BDL">
           <div class="portfolio-content">
             <h3>SLiMS : SMK 2 Mei BDL</h3>
@@ -217,7 +236,7 @@
             <a href="https://drive.google.com/file/d/1BthEmHzpOJaItYxhaHzvjicPgATDQBQb/view?usp=drive_link" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="software-development">
           <img src="assets/img/project6.png" alt="LibyDoor : Perpustakaan Digital">
           <div class="portfolio-content">
             <h3>LibyDoor : Perpustakaan Digital</h3>
@@ -231,7 +250,7 @@
             <a href="https://drive.google.com/file/d/1bMbY2rGFm-bZtv-Efvmss8zfqEi1zpIW/view?usp=drive_link" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="ui-ux">
           <img src="assets/img/project7.png" alt="Xaca Music : Redesign Spotify">
           <div class="portfolio-content">
             <h3>Xaca Music : Redesign Spotify</h3>
@@ -243,7 +262,7 @@
             <a href="https://drive.google.com/file/d/1xGHCKaloIhU-IaN4Pf-zQdgkuvdzd1kN/view?usp=drive_link" class="btn btn-case">Show</a>
           </div>
         </div>
-        <div class="portfolio-card scroll-animate">
+        <div class="portfolio-card scroll-animate" data-role="software-development">
           <img src="assets/img/project8.png" alt="Web Rental Mobil Lampung">
           <div class="portfolio-content">
             <h3>Web Rental Mobil Lampung</h3>
