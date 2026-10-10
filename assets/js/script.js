@@ -32,8 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
         
         navLinks.forEach(link => {
           link.classList.remove('active');
+          link.removeAttribute('aria-current');
           if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'location');
           }
         });
       }
@@ -61,8 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
           if (hb) {
             hb.classList.remove('is-active');
             hb.setAttribute('aria-expanded', 'false');
+            hb.setAttribute('aria-label', 'Open navigation menu');
           }
           document.body.classList.remove('no-scroll');
+          updateHeaderHeight();
         }
 
         if (targetElement) {
@@ -71,7 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
           const headerHeight = header ? header.offsetHeight : 0;
           const offset = 8; // small gap
           const targetY = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: targetY, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
           history.pushState(null, null, href);
         }
       }
@@ -98,7 +103,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 250);
     };
 
-    setInterval(cycleHeroText, 3200);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(cycleHeroText, 3200);
+    }
   }
 
   const portfolioTabs = document.querySelectorAll('.role-tab');
@@ -150,7 +157,9 @@ document.addEventListener('DOMContentLoaded', function () {
           const submitButton = form.querySelector('button[type="submit"]');
           
           statusDiv.style.marginTop = '1rem';
-          statusDiv.innerHTML = 'Sending...';
+          statusDiv.setAttribute('role', 'status');
+          statusDiv.setAttribute('aria-live', 'polite');
+          statusDiv.textContent = 'Sending...';
           form.appendChild(statusDiv);
           submitButton.disabled = true;
 
@@ -162,21 +171,21 @@ document.addEventListener('DOMContentLoaded', function () {
               }
           }).then(response => {
               if (response.ok) {
-                  statusDiv.innerHTML = 'Thanks for your message! I will get back to you shortly.';
+                  statusDiv.textContent = 'Thanks for your message! I will get back to you shortly.';
                   submitButton.disabled = false;
                   form.reset();
               } else {
                   response.json().then(data => {
                       if (Object.hasOwn(data, 'errors')) {
-                          statusDiv.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                          statusDiv.textContent = data.errors.map(error => error.message).join(', ');
                       } else {
-                          statusDiv.innerHTML = 'Oops! There was a problem submitting your form';
+                          statusDiv.textContent = 'Oops! There was a problem submitting your form';
                       }
                       submitButton.disabled = false;
                   })
               }
           }).catch(error => {
-              statusDiv.innerHTML = 'Oops! There was a problem submitting your form. Please check your internet connection.';
+              statusDiv.textContent = 'Oops! There was a problem submitting your form. Please check your internet connection.';
               submitButton.disabled = false;
           });
       });
@@ -221,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
       navMenu.classList.toggle('open', isOpen);
       hamburger.classList.toggle('is-active', isOpen);
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
       document.body.classList.toggle('no-scroll', isOpen);
       // ensure header-height reflects any change (menu may increase header height on some designs)
       updateHeaderHeight();
@@ -231,7 +241,18 @@ document.addEventListener('DOMContentLoaded', function () {
       toggleMenu();
     });
 
-    // (nav link click now handles closing the menu; no duplicate listeners here)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        toggleMenu(false);
+        hamburger.focus();
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (navMenu.classList.contains('open') && !e.target.closest('.main-header')) {
+        toggleMenu(false);
+      }
+    });
   }
   // update header height once more after DOM-ready microtasks
   setTimeout(updateHeaderHeight, 200);
